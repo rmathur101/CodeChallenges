@@ -16,5 +16,5 @@ class Gigasecond
 	def date
 		return Time.at(date_unix + 10**9).to_date
 	end
-	
+
 end

@@ -1,41 +1,21 @@
 =begin Pseudocode
-	Think about using a switch statement to accomplish this problem
-
+	Nitpicked. Can refactor code. Use Hash instead of case statement. Use (and research) map.
 =end
 
 class Complement
 
+	@@DNA_TO_RNA_HASH = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
+
 	def self.of_dna(strand)
-		return transcribe_strand(strand, "DNA")
+		convert(strand, @@DNA_TO_RNA_HASH)
 	end
 
 	def self.of_rna(strand)
-		return transcribe_strand(strand, "RNA")
+		convert(strand, @@DNA_TO_RNA_HASH.invert)
 	end
 
-	def self.transcribe_strand(strand, strand_type)
-		string_complement = ""
-		strand.each_char do |char|
-			string_complement += transcribe_char(char, strand_type)
-		end
-		return string_complement
-	end
-
-	def self.transcribe_char(char, strand_type)
-		case 
-		when "G" == char
-			return "C"
-		when "C" == char
-			return "G"
-		when "T" == char
-			return "A"
-		when "A" == char && strand_type == "DNA"
-			return "U"
-		when "A" == char && strand_type == "RNA"
-			return "T"
-		when 'U' == char
-			return "A"
-		end
+	def self.convert(strand, conversion_hash)
+		return strand.split("").map{|char| conversion_hash[char]}.join("")
 	end
 
 end

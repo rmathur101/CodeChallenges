@@ -1,15 +1,12 @@
 class Hamming
 	
 	def self.compute(strand1, strand2)
-
 		standardize_strands(strand1, strand2)
-		
 		if check_lengths == false
 			return 0
 		else
 			return get_hamming_difference
 		end
-
 	end
 
 	def self.standardize_strands(strand1, strand2)

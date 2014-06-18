@@ -7,29 +7,21 @@ information creates array => this should be in initialize so array can be change
 
 class Squares
 
-def initialize(num)
-	@num = num
-	@array_nums = [*1..@num]
-end
-
-def square_of_sums
-	total = 0
-	@array_nums.each do |n|
-		total += n
+	def initialize(num)
+		@num = num
+		@array_nums = [*1..@num]
 	end
-	return total**2
-end
 
-def sum_of_squares
-	total = 0
-	@array_nums.each do |n|
-		total += n**2
+	def square_of_sums
+		return (@array_nums.reduce(:+))**2
 	end
-	return total
-end
 
-def difference
-	return square_of_sums - sum_of_squares
-end
+	def sum_of_squares
+		return @array_nums.reduce{ |sum, n| sum + n**2 }
+	end
+
+	def difference
+		return square_of_sums - sum_of_squares
+	end
 
 end

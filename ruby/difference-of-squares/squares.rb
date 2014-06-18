@@ -1,7 +1,7 @@
 =begin Pseudocode
 how to make this code dry.
-information about num CHECK
-information about creating array => this should be in initialize so array can be changed 
+information about num is dry
+information creates array => this should be in initialize so array can be changed  
 
 =end
 

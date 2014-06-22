@@ -30,15 +30,49 @@ class Fixnum
 		num_integer = self
 		roman_numeral_string = ""
 
+		while num_integer >= 1000
+			roman_numeral_string += "M"
+			num_integer -= 1000
+		end
+
+		if num_integer - 900 <= 100 && num_integer - 900 >= 0
+			roman_numeral_string += "CM"
+			num_integer -= 900
+		end
+
+		while num_integer >= 500
+			roman_numeral_string += "D"
+			num_integer -= 500
+		end
+
+#i have to check against 100 or 10?
+		if num_integer - 400 <= 100 && num_integer - 400 >= 0
+			roman_numeral_string += "CD"
+			num_integer -= 400
+		end
+
+		while num_integer >= 100
+			roman_numeral_string += "C"
+			num_integer -= 100
+		end
+
+		if num_integer - 90 <= 10 && num_integer - 90 >= 0
+			roman_numeral_string += "XC"
+			num_integer -= 90
+		end
+
+
 		while num_integer >= 50
 			roman_numeral_string += "L"
 			num_integer -= 50
 		end
 
-		if num_integer == 40
+#--------------------------------CASE: XL
+		if num_integer - 40 <= 10 && num_integer - 40 >= 0 
 			roman_numeral_string += "XL"
 			num_integer -= 40
 		end
+#---------------------------------------------------
 
 		while (num_integer >= 10)
 			roman_numeral_string += "X"
@@ -70,12 +104,6 @@ class Fixnum
 
 	end
 end
-
-
-
-
-
-
 
 #is this called monkeypatching?
 

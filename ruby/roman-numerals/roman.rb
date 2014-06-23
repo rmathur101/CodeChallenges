@@ -1,35 +1,27 @@
 class Fixnum
+  def to_roman
+    remaining = self
+    ROMANS.each_with_object('') do |(arabic, roman), result|
+      result << roman * (remaining / arabic) #takes how many times arabic goes into num; places that many numerals into result; 
+      remaining %= arabic #returns the left over when doing remaining / arabic; note that when doing a smaller / larger number the smaller number will be returned as the remainder; once we dived the remaining by the arabic and it is larger / smaller then note that diving completely take out the divisor out as a factor - > 40 / 10 = 4 (now 10 is no longer a factor of this number) and this is why eliminate an arabic's romans after it has been added
+    end
+  end
 
-	@@roman_numeral_hash = {1000 => "M", 900 => "CM", 500 => "D", 400 => "CD", 100 => "C", 90 => "XC", 50 => "L", 40 => "XL", 10 => "X", 9 => "IX", 5 => "V", 4 => "IV", 1 => "I"}
-
-	@@edge_case_hash = {500 => 900, 100 => 400, 50 => 90, 10 => 40, 5 => 9, 1 => 4} #each numerals has an edge except 1000
-
-	def iterate_roman_numerals(key, value)
-		check_edge_cases(key)
-		while @num_integer >= key
-			@roman_numeral_string += value
-			@num_integer -= key
-		end
-	end
-
-	def check_edge_cases(key)
-		if @@edge_case_hash[key]
-			if @num_integer - @@edge_case_hash[key] >= 0
-				 @roman_numeral_string += @@roman_numeral_hash[@@edge_case_hash[key]]
-				 @num_integer - @@edge_case_hash[key]
-			end
-		end
-	end
-
-	def to_roman
-		@num_integer = self
-		@roman_numeral_string = ""
-		@@roman_numeral_hash.each_pair do |key, value|
-			iterate_roman_numerals(key, value)
-		end
-		return @roman_numeral_string
-	end
-
+  ROMANS = { 
+    1000 => 'M',
+    900 => 'CM',
+    500 => 'D',
+    400 => 'CD',
+    100 => 'C',
+    90 => 'XC',
+    50 => 'L',
+    40 => 'XL',
+    10 => 'X',
+    9 => 'IX',
+    5 => 'V',
+    4 => 'IV',
+    1 => 'I'
+  }
 end
 
 #QUESTIONS

@@ -38,7 +38,7 @@ end
 #THOUGHTS
 #This is not a permanent change to the Fixnum class. It seems that this this new method that is being added will only occur at runtime.
 
-#Refactored the code to abstract logic 
+#Version2: Refactored the code to abstract logic. I have a separate method to deal with normal edge cases and for edge cases
 
 
 

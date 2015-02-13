@@ -1,11 +1,9 @@
-import re
+#use the get method to remove the conditional
+#remove re import; use split instead
 
 def word_count(string):
 	words_dict = {}
-	words_array = re.findall('\S+', string)
+	words_array = string.split()
 	for word in words_array:
-		if word in words_dict:
-			words_dict[word] += 1
-		else:
-			words_dict[word] = 1
+		words_dict[word] = words_dict.get(word, 0) + 1
 	return words_dict
